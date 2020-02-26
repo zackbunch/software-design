@@ -1,0 +1,117 @@
+<link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+<link rel='stylesheet' href='main.css'>
+
+<h2>Publishers<h2>
+
+<div id='pub-addition' class="textbox-btn">
+  <input type="text" class="form-control" placeholder="Create New Publisher">
+  <button class="btn btn-primary">Add</button>
+  <!-- <button class="btn btn-secondary">Remove</button> -->
+
+</div>
+
+<div id="publisher-list">
+  {{#publishers}}
+<div class="publisher">
+  <h4>{{name}}</h4>
+  <input type="text" class="form-control" placeholder="Title of Tell" >
+  <!-- <textarea  class='form-control' placeholder='Content'></textarea> -->
+  <input type="text" class="form-control" placeholder="Name of Teller">
+  <input type="text" class="form-control" placeholder="Keyword Describing Tell">
+  <button class="btn btn-default">Publish</button>
+
+  <ul>
+
+    {{#works}}
+    <li>
+      {{title}}
+      <p></p>
+      <!-- <b>{{tellerName}}</b><br>
+      <b>{{keyword}}</b><br> -->
+
+      <!-- {{payload}} -->
+    </li>
+    {{/works}}
+  </ul>
+</div>
+{{/publishers}}
+<br style='clear:both' />
+</div>
+
+
+<!-- Create subscriber forms  -->
+<h2>Subscribers</h2>
+<div id="sub-addition" class="textbox-btn">
+  <input type="text" class="form-control" placeholder="Create New Subscriber">
+  <button class="btn btn-primary">Add</button>
+  <!-- <button class="btn btn-secondary">Remove</button> -->
+</div>
+
+<div id="subscriber-list">
+  {{#subscribers}}
+  <div class="subscriber">
+    <h4>{{name}}</h4>
+    <input type="text" class="form-control" placeholder="Add Tell to Follow">
+
+    <input type="text" class="form-control" placeholder="Add Teller to Follow">
+    <input type="text" class="form-control" placeholder="Add Keyword to Follow">
+    <!-- <div id="snoAlertBox" class="alert alert-success" data-alert="alert">Now Update your Search</div> -->
+    <button class="btn btn-default">Subscribe</button>
+
+
+    <h6> Subscribed to the following Titles: </h6>
+    <ul class="titles">
+      {{#titles}}
+      <li> {{.}}
+        {{/titles}}
+      </ul>
+
+      <h6> Subscribed to the following Tellers: </h6>
+      <ul class="tellers">
+        {{#tellers}}
+        <li> {{.}}
+          {{/tellers}}
+        </ul>
+
+        <h6> Subscribed to the following Keywords: </h6>
+        <ul class="keywords">
+          {{#keywords}}
+          <li> {{.}}
+            {{/keywords}}
+          </ul>
+
+      <!-- Notfications will be posted here when there is something to be updated -->
+      <!-- <button type="button" class="btn btn-primary">
+        Notifications <span class="badge badge-light">4</span>
+      </button> -->
+
+      <h6>Notifications</h6><span class="badge badge-light">{{notificationCount}}</span>
+      <ul class="notifications">
+        {{#notifications}}
+        <li>New Notification from: - <i>{{name}}</i>
+          <li>ID: <b>{{uniqueId}}</b>
+        <li>Tell Title: <b>{{title}}</b>
+
+          <li>Teller Name: <b>{{teller}}</b>
+            <li>Keyword: <b>{{keyword}}</b>
+              <li> Date: <b>{{date}}</b>
+          {{/notifications}}
+        </ul>
+      </div>
+
+      {{/subscribers}}
+      <br style="clear: both" />
+
+      </div>
+
+      <!-- END OF Notfications -->
+
+
+
+
+<!-- https://github.com/ajhalthor/pubsub-application -->
+<script src='node_modules/jquery/dist/jquery.js'></script>
+<script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+<script src='node_modules/mustache/mustache.js'></script>
+<script src='pubsub.js'></script>
+<script src='scripts.js'></script>
